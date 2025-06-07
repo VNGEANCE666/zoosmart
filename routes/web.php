@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\HewanController as AdminHewanController;
+use App\Http\Controllers\admin\PerawatanController as AdminPerawatanController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,5 @@ Route::prefix('petugas')->middleware(['auth'])->as('petugas.')->group(function (
     })->name('dashboard.index');
 
     Route::resource('hewan', AdminHewanController::class);
+    Route::resource('perawatan', AdminPerawatanController::class);
 });

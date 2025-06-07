@@ -75,6 +75,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('petugas.perawatan.index') }}" class="nav-link">
+                                <i class="nav-icon far fa-building"></i>
+                                <p>
+                                    Perawatan
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

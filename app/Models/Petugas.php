@@ -14,6 +14,6 @@ class Petugas extends Authenticatable
     protected $hidden = ['password'];
 
     public function perawatan(){
-        return $this->hasMany(Perawatan::class);
+        return $this->hasMany(Perawatan::class, 'id_petugas');
     }
 }

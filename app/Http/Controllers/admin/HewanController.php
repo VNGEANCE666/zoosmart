@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Hewan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HewanController extends Controller
 {
@@ -31,7 +32,23 @@ class HewanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_hewan' => "required",
+            'spesies' => "required",
+            'habitat' => "required",
+            'tanggal_lahir' => "required",
+        ]);
+
+        $hewan = new Hewan();
+        $hewan->nama_hewan = $validated['nama_hewan'];
+        $hewan->spesies = $validated['spesies'];
+        $hewan->habitat = $validated['habitat'];
+        $hewan->tanggal_lahir = $validated['tanggal_lahir'];
+        $hewan->save();
+
+        Alert::success("Berhasil membuat data hewan!");
+
+        return redirect()->route('petugas.hewan.index');
     }
 
     /**
@@ -39,7 +56,9 @@ class HewanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $hewan = Hewan::find($id);
+
+        return view('petugas.hewan.show', compact('hewan'));
     }
 
     /**
@@ -47,7 +66,9 @@ class HewanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $hewan = Hewan::find($id);
+
+        return view('petugas.hewan.edit', compact('hewan'));
     }
 
     /**
@@ -55,7 +76,23 @@ class HewanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'nama_hewan' => "required",
+            'spesies' => "required",
+            'habitat' => "required",
+            'tanggal_lahir' => "required",
+        ]);
+
+        $hewan = Hewan::find($id);
+        $hewan->nama_hewan = $validated['nama_hewan'];
+        $hewan->spesies = $validated['spesies'];
+        $hewan->habitat = $validated['habitat'];
+        $hewan->tanggal_lahir = $validated['tanggal_lahir'];
+        $hewan->save();
+
+        Alert::success("Berhasil merubah data hewan!");
+
+        return redirect()->route('petugas.hewan.index');
     }
 
     /**
@@ -63,6 +100,10 @@ class HewanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Hewan::find($id)->delete();
+
+        Alert::success('Berhasil menghapus hewan!');
+
+        return redirect()->route('petugas.hewan.index');
     }
 }

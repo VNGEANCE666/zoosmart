@@ -3,7 +3,7 @@
     <div class="p-4">
         <div class="d-flex flex-row justify-content-between mb-4 px-2">
             <h1>Hewan</h1>
-            <a href="{{ route('petugas.hewan.create') }}" class="btn btn-success btn-md">Tambah Data</a>
+            <a href="{{ route('petugas.hewan.create') }}" class="btn btn-primary btn-md">Tambah Data</a>
         </div>
         <div class="d-flex flex-column">
             <table class="table table-striped" id="datatable">
