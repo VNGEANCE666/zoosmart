@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\HewanController as AdminHewanController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+
+Route::get('login-page', [AuthController::class, 'login_page'])->name('auth.login-page');
+
+Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+
+Route::prefix('petugas')->middleware(['auth'])->as('petugas.')->group(function () {
+    Route::get('dashboard', function () {
+        return view('petugas.dashboard.index');
+    })->name('dashboard.index');
+
+    Route::resource('hewan', AdminHewanController::class);
 });
