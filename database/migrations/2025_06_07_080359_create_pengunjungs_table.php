@@ -13,11 +13,8 @@ return new class extends Migration
     {
         Schema::create('pengunjungs', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
-            $table->string('username');
-            $table->string('password');
-            $table->string('role')->default('PENGUNJUNG');
+            $table->string('email');
             $table->string('nama_pengunjung');
-            $table->string('no_hp');
             $table->timestamps();
         });
     }

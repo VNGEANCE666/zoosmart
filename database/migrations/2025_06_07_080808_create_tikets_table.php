@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->date('tanggal_kunjungan');
             $table->integer('jumlah_orang');
+            $table->boolean('is_used')->default(false);
             $table->timestamps();
         });
     }

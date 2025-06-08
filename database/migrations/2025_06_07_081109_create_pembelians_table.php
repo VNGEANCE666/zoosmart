@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pembelians', function (Blueprint $table) {
-            $table->id();
+            $table->string("order_id");
             $table->unsignedBigInteger('id_tiket');
             $table->foreign('id_tiket')->references('id')->on('tikets');
             $table->unsignedBigInteger('id_pengunjung');
             $table->foreign('id_pengunjung')->references('id')->on('pengunjungs');
-
             $table->dateTime('tanggal_pembelian');
+            $table->string('status_transaksi')->default('pending');
             $table->timestamps();
         });
     }

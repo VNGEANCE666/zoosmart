@@ -83,6 +83,22 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('petugas.tiket.index') }}" class="nav-link">
+                                <i class="nav-icon far fa-building"></i>
+                                <p>
+                                    Tiket
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('petugas.pembelian.index') }}" class="nav-link">
+                                <i class="nav-icon far fa-building"></i>
+                                <p>
+                                    Pembelian
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pengunjung extends Model
 {
     protected $table = 'pengunjungs';
-    protected $fillable = ['id', 'username', 'password', 'role', 'nama_pengunjung', 'no_hp'];
+    protected $fillable = ['id', 'email', 'nama_pengunjung'];
 
     public function pembelian(){
         return $this->hasMany(Pembelian::class);
