@@ -74,6 +74,11 @@ class PaymentGatewayController extends Controller
         $pembelian->status = $request->transaction_status;
         $pembelian->save();
 
+        if($pembelian->status == "settlement"){
+            $tiket = Tiket::find($pembelian->id_tiket);
+            $tiket->is_used = true;
+        }
+
         return response()->json($pembelian);
     }
 }
