@@ -3,7 +3,7 @@
 use App\Http\Controllers\admin\HewanController as AdminHewanController;
 use App\Http\Controllers\admin\PerawatanController as AdminPerawatanController;
 use App\Http\Controllers\admin\TiketController as AdminTiketController;
-use App\Http\Controllers\PembelianController as AdminPembelianController;
+use App\Http\Controllers\admin\PembelianController as AdminPembelianController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaymentGatewayController;
 use App\Models\Tiket;

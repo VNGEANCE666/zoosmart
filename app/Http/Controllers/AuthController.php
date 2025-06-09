@@ -22,12 +22,6 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (Auth::guard('pengunjung')->attempt($validated)) {
-            $request->session()->regenerate();
-
-            return redirect()->route('pengunjung.dashboard.index');
-        }
-
         if (Auth::guard('petugas')->attempt($validated)) {
             $request->session()->regenerate();
 
