@@ -30,7 +30,7 @@ class PaymentGatewayController extends Controller
             'tiket_id' => 'required|int'
         ]);
 
-        
+
         $tiket = Tiket::find($validatedData['tiket_id']);
         if ($tiket->is_used == true) {
             return;
@@ -56,6 +56,9 @@ class PaymentGatewayController extends Controller
                 'order_id' => $order_id,
                 'gross_amount' => $tiket->harga,
             ],
+            'customer_details' => [
+                'email' => $validatedData['email'],
+            ]
         ];
 
         try {
@@ -71,12 +74,20 @@ class PaymentGatewayController extends Controller
     public function notification_url(Request $request)
     {
         $pembelian = Pembelian::where('order_id', $request->order_id)->first();
-        $pembelian->status = $request->transaction_status;
+
+        if (!$pembelian) {
+            return response()->json(['error' => 'Order not found'], 404);
+        }
+
+        $pembelian->status_transaksi = $request->transaction_status;
         $pembelian->save();
 
-        if($pembelian->status == "settlement"){
+        if ($request->transaction_status == "settlement") {
             $tiket = Tiket::find($pembelian->id_tiket);
-            $tiket->is_used = true;
+            if ($tiket) {
+                $tiket->is_used = true;
+                $tiket->save();
+            }
         }
 
         return response()->json($pembelian);

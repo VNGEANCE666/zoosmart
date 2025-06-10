@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pembelian extends Model
 {
     protected $table = 'pembelians';
+    protected $primaryKey = 'order_id';
+    public $incrementing = false;
+    protected $keyType = 'string';   
     protected $fillable = ['order_id', 'id_tiket', 'id_pengunjung', 'tanggal_pembelian', 'status_transaksi'];
 
     public function tiket(){

@@ -50,8 +50,6 @@ Route::get('checkout-page', function(){
 })->name('pengunjung.checkout-page');
 
 Route::post('checkout', [PaymentGatewayController::class, 'checkout'])->name('payment.checkout');
-Route::post('notification-url', [PaymentGatewayController::class, 'notification_url'])->name('payment.notification-url');
-
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');

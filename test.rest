@@ -1,0 +1,8 @@
+POST https://cc2d-180-252-81-74.ngrok-free.app/api/notification-url
+Content-Type: application/json
+
+{
+    "sigmas": "1235",
+    "order_id": "order-1749534040",
+    "transaction_status": "settlement"
+}
