@@ -2,40 +2,41 @@
 @section('content')
     <div class="p-4">
         <div class="d-flex flex-row justify-content-between mb-4 px-2">
-            <h1>Lihat Hewan</h1>
-            <a href="{{ route('petugas.hewan.index') }}" class="btn btn-secondary">Kembali</a>
+            <h1>Lihat Pembelian</h1>
         </div>
         <div class="d-flex flex-column">
-            <form method="POST" action="{{route('petugas.hewan.store')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('petugas.pembelian.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="form-group col-6">
-                        <label for="nama_hewan">Nama</label>
-                        <input type="text" class="form-control" name="nama_hewan" id="nama_hewan" value="{{$hewan->nama_hewan}}" placeholder="Nama Hewan" required disabled>
+                        <label for="ordder_id">Order Id</label>
+                        <input type="text" class="form-control" name="ordder_id" id="ordder_id" value="{{$pembelian->order_id}}" placeholder="Order Id" required disabled>
                     </div>
                     <div class="form-group col-6">
-                        <label for="spesies">Spesies</label>
-                        <input type="text" class="form-control" name="spesies" id="spesies" value="{{$hewan->spesies}}" placeholder="Spesies Hewan" required disabled>
+                        <label for="status_transaksi">Status Transaksi</label>
+                        <input type="text" class="form-control" name="status_transaksi" id="status_transaksi" value="{{$pembelian->status_transaksi}}" placeholder="Status Transaksi" required disabled>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-6">
-                        <label for="habitat">Habitat</label>
-                        <input type="text" class="form-control" name="habitat" id="habitat" value="{{$hewan->habitat}}" placeholder="Habitat Hewan" required disabled>
+                        <label for="email">Email Pengunjung</label>
+                        <input type="text" class="form-control" name="email" id="email" value="{{$pembelian->pengunjung->email}}" placeholder="Email Pengunjung" required disabled>
                     </div>
                     <div class="form-group col-6">
-                        <label for="tanggal_lahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="{{$hewan->tanggal_lahir}}" placeholder="Tanggal Lahir" required disabled>
+                        <label for="spesies">Nama Pengunjung</label>
+                        <input type="text" class="form-control" name="spesies" id="spesies" value="{{$pembelian->pengunjung->nama_pengunjung}}" placeholder="Nama Pengunjung" required disabled>
                     </div>
                 </div>
-
-                <a class="btn btn-secondary" href="{{route('petugas.hewan.index')}}">Kembali</a>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <div class="form-group col-12">
+                        <label for="tanggal_pembelian">Tanggal Pembelian</label>
+                        <input type="datetime-local" class="form-control" name="tanggal_pembelian" id="tanggal_pembelian" value="{{$pembelian->tanggal_pembelian}}" placeholder="Nama Pengunjung" required disabled>
+                    </div>
+                    </div>
+                </div>
+                <a class="btn btn-secondary" href="{{route('petugas.pembelian.index')}}">Kembali</a>
             </form>
         </div>
     </div>
-@endsection
-@section('script')
-    <script>
-        $('#editor').summernote()
-    </script>
 @endsection

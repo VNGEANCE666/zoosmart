@@ -31,8 +31,3 @@
         </div>
     </div>
 @endsection
-@section('script')
-    <script>
-        $('#editor').summernote()
-    </script>
-@endsection

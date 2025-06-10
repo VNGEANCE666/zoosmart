@@ -22,8 +22,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('index');
 
+Route::get('/activities', function () {
+    return view('activities');
+})->name('activities');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/animal', function () {
+    return view('animal');
+})->name('animal');
 
 Route::get('login-page', [AuthController::class, 'login_page'])->name('auth.login-page');
 Route::get('register-page', [AuthController::class, 'register_page'])->name('auth.register-page');

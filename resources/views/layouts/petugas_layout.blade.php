@@ -43,33 +43,9 @@
                                 </p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-address-card"></i>
-                                <p>
-                                    Hewan
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('petugas.dashboard.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tahun Ajaran</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('petugas.dashboard.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Data Pendaftar</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
-
                         <li class="nav-item">
                             <a href="{{ route('petugas.hewan.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-building"></i>
+                                <i class="nav-icon fas fa-paw"></i>
                                 <p>
                                     Hewan
                                 </p>
@@ -77,7 +53,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('petugas.perawatan.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-building"></i>
+                                <i class="nav-icon 	fas fa-notes-medical"></i>
                                 <p>
                                     Perawatan
                                 </p>
@@ -85,7 +61,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('petugas.tiket.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-building"></i>
+                                <i class="nav-icon fas fa-ticket-alt"></i>
                                 <p>
                                     Tiket
                                 </p>
@@ -93,7 +69,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('petugas.pembelian.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-building"></i>
+                                <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>
                                     Pembelian
                                 </p>
