@@ -10,7 +10,7 @@ class Petugas extends Authenticatable
     use HasFactory;
 
     protected $table = 'petugas';
-    protected $fillable = ['id', 'username', 'password', 'role', 'nama_petugas', 'jabatan', 'kontak', 'shift'];
+    protected $fillable = ['id', 'username', 'password', 'nama_petugas', 'jabatan', 'kontak', 'shift'];
     protected $hidden = ['password'];
 
     public function perawatan(){
