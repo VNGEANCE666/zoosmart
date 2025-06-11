@@ -9,11 +9,15 @@
             <form method="POST" action="{{route('petugas.hewan.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-4">
+                        <label for="gambar_hewan">Gambar</label>
+                        <input type="file" class="form-control" name="gambar_hewan" id="gambar_hewan" placeholder="Gambar Hewan" required>
+                    </div>
+                    <div class="form-group col-4">
                         <label for="nama_hewan">Nama</label>
                         <input type="text" class="form-control" name="nama_hewan" id="nama_hewan" placeholder="Nama Hewan" required>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-4">
                         <label for="spesies">Spesies</label>
                         <input type="text" class="form-control" name="spesies" id="spesies" placeholder="Spesies Hewan" required>
                     </div>

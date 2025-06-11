@@ -9,28 +9,42 @@
             <form method="POST" action="{{route('petugas.hewan.update', $hewan->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="nama_hewan">Nama</label>
-                        <input type="text" class="form-control" name="nama_hewan" id="nama_hewan" value="{{$hewan->nama_hewan}}" placeholder="Nama Hewan" required>
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="spesies">Spesies</label>
-                        <input type="text" class="form-control" name="spesies" id="spesies" value="{{$hewan->spesies}}" placeholder="Spesies Hewan" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="habitat">Habitat</label>
-                        <input type="text" class="form-control" name="habitat" id="habitat" value="{{$hewan->habitat}}" placeholder="Habitat Hewan" required>
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="tanggal_lahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="{{$hewan->tanggal_lahir}}" placeholder="Tanggal Lahir" required>
-                    </div>
-                </div>
 
-                <button class="btn btn-warning">Edit</button>
+                <div class="row">
+                    <div class="col-4">
+                        <img src="{{env('FILE_URL') . $hewan->gambar_hewan}}" class="img-fluid" alt="Gambar Hewan">
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="nama_hewan">Nama</label>
+                                <input type="text" class="form-control" name="nama_hewan" id="nama_hewan" value="{{$hewan->nama_hewan}}" placeholder="Nama Hewan" required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="spesies">Spesies</label>
+                                <input type="text" class="form-control" name="spesies" id="spesies" value="{{$hewan->spesies}}" placeholder="Spesies Hewan" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                                 <div class="form-group col-12">
+                                <label for="gambar_hewan">Gambar Hewan</label>
+                                <input type="file" class="form-control" name="gambar_hewan" id="gambar_hewan" value="{{$hewan->gambar_hewan}}" placeholder="Spesies Hewan">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="habitat">Habitat</label>
+                                <input type="text" class="form-control" name="habitat" id="habitat" value="{{$hewan->habitat}}" placeholder="Habitat Hewan" required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="tanggal_lahir">Tanggal Lahir</label>
+                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="{{$hewan->tanggal_lahir}}" placeholder="Tanggal Lahir" required>
+                            </div>
+                        </div>
+        
+                        <button class="btn btn-warning">Edit</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

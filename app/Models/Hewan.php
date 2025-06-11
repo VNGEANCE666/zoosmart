@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hewan extends Model
 {
     protected $table = 'hewans';
-    protected $fillable = ['id', 'nama_hewan', 'spesies', 'habitat', 'tanggal_lahir'];
+    protected $fillable = ['id', 'gambar_hewan', 'nama_hewan', 'spesies', 'habitat', 'tanggal_lahir'];
 
     public function perawatan(){
         return $this->hasMany(Perawatan::class);

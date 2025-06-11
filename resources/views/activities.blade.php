@@ -9,7 +9,7 @@
         <p style="font-size: 20px; color: white; max-width: 600px; margin-bottom: 30px;">
             Enjoy feeding sessions, educational tours, wildlife photography, and more exciting activities at Zoosmart!
         </p>
-        <a href="pengunjung.checkout-page" class="get-ticket">Get Ticker</a>
+        <a href="{{route('pengunjung.checkout-page')}}" class="get-ticket">Get Ticket</a>
     </div>
 </div>
 @endsection

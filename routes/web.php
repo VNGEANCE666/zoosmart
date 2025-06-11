@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\TiketController as AdminTiketController;
 use App\Http\Controllers\admin\PembelianController as AdminPembelianController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaymentGatewayController;
+use App\Models\Hewan;
 use App\Models\Tiket;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,9 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/animal', function () {
-    return view('animal');
+    $hewans = Hewan::all();
+
+    return view('animal', compact('hewans'));
 })->name('animal');
 
 Route::get('login-page', [AuthController::class, 'login_page'])->name('auth.login-page');

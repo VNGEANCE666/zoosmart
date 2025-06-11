@@ -15,7 +15,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id')->autoIncrement();
             $table->string('username');
             $table->string('password');
-            $table->string('role')->default("PETUGAS");
             $table->string('nama_petugas');
             $table->string("jabatan");
             $table->string("kontak");

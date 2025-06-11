@@ -9,7 +9,7 @@
         <p style="font-size: 20px; color: white; max-width: 600px; margin-bottom: 30px;">
             Zoosmart is dedicated to wildlife conservation, education, and unforgettable experiences for families and nature lovers.
         </p>
-        <a href="pengunjung.checkout-page" class="get-ticket">Get Ticker</a>
+        <a href="{{route('pengunjung.checkout-page')}}" class="get-ticket">Get Ticket</a>
     </div>
 </div>
 @endsection

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Hewan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class HewanController extends Controller
 {
@@ -33,13 +35,20 @@ class HewanController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'gambar_hewan' => "required",
             'nama_hewan' => "required",
             'spesies' => "required",
             'habitat' => "required",
             'tanggal_lahir' => "required",
         ]);
 
+        $file = $request->file('gambar_hewan');
+        $uuidName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+        $file->storeAs('uploads', $uuidName, 'public');
+        $path = '/uploads/' . $uuidName;
+
         $hewan = new Hewan();
+        $hewan->gambar_hewan = $path;
         $hewan->nama_hewan = $validated['nama_hewan'];
         $hewan->spesies = $validated['spesies'];
         $hewan->habitat = $validated['habitat'];
@@ -77,13 +86,23 @@ class HewanController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
+            'gambar_hewan' => 'nullable',
             'nama_hewan' => "required",
             'spesies' => "required",
             'habitat' => "required",
             'tanggal_lahir' => "required",
         ]);
-
         $hewan = Hewan::find($id);
+
+         if ($request->hasFile('gambar_hewan')) {
+            $file = $request->file('gambar_hewan');
+            $uuidName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('uploads', $uuidName, 'public');
+            $path = '/uploads/' . $uuidName;
+
+            $hewan->gambar_hewan = $path;
+        }
+
         $hewan->nama_hewan = $validated['nama_hewan'];
         $hewan->spesies = $validated['spesies'];
         $hewan->habitat = $validated['habitat'];

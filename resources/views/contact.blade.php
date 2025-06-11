@@ -1,7 +1,16 @@
 @extends('layouts.main_layout')
+
+@section('title', 'Contact')
+
 @section('content')
-    <main style="padding: 2rem;">
-    <h1>Contact Us</h1>
-    <p>Email: contact@zoosmart.com<br />Phone: (123) 456-7890<br />Location: 123 Safari Way, Animalia</p>
-  </main>
+    <div class="hero" style="background-image: url('{{ asset('images/activities.jpg') }}');">
+        <div>
+            <h1 style="font-size: 48px; color: white; margin-bottom: 20px;">Contact</h1>
+            <p style="font-size: 20px; color: white; max-width: 600px; margin-bottom: 30px;">
+                Discover various animals from around the world in our carefully designed habitat zones: African Savanna,
+                Tropical Rainforest, Reptile House, and more!
+            </p>
+            <a href="{{route('pengunjung.checkout-page')}}" class="get-ticket">Get Ticket</a>
+        </div>
+    </div>
 @endsection

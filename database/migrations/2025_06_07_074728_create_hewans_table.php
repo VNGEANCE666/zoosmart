@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('hewans', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string("gambar_hewan");
             $table->string('nama_hewan');
             $table->string('spesies');
             $table->string('habitat');
