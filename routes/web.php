@@ -7,6 +7,8 @@ use App\Http\Controllers\admin\PembelianController as AdminPembelianController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaymentGatewayController;
 use App\Models\Hewan;
+use App\Models\Pembelian;
+use App\Models\Perawatan;
 use App\Models\Tiket;
 use Illuminate\Support\Facades\Route;
 
@@ -59,7 +61,21 @@ Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::prefix('petugas')->middleware(['auth'])->as('petugas.')->group(function () {
     Route::get('dashboard', function () {
-        return view('petugas.dashboard.index');
+        $pembelians = Pembelian::where('status_transaksi', 'settlement')->get();
+
+        $total_pembelian = 0;
+
+        for($i = 0;$i < sizeof($pembelians);$i++){
+            $total_pembelian += $pembelians->tiket->harga;
+        }
+
+        $hewans = Hewan::all();
+        $total_hewan = sizeof($hewans);
+
+        $perawatans = Perawatan::all();
+        $total_perawatan = sizeof($perawatans);
+
+        return view('petugas.dashboard.index', compact('total_pembelian', 'total_hewan', 'total_perawatan'));
     })->name('dashboard.index');
 
     Route::resource('hewan', AdminHewanController::class);
