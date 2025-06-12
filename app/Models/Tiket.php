@@ -12,7 +12,7 @@ class Tiket extends Model
 
     public function pembelian()
     {
-        return $this->hasMany(Pembelian::class);
+        return $this->hasMany(Pembelian::class, 'id_tiket', 'id');
     }
     use HasFactory;
 }

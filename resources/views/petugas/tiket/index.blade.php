@@ -28,12 +28,12 @@
                             <td>Rp{{ number_format($tiket->harga, 2, ",", ".") }}</td>
                             <td>
                                 <a href="{{ route('petugas.tiket.show', $tiket->id) }}" class="btn btn-success">Lihat</a>
-                                <a href="{{ route('petugas.tiket.edit', $tiket->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('petugas.tiket.edit', $tiket->id) }}" class="btn btn-warning" {{sizeof($tiket->pembelian) > 0 ? "disabled" : null}}>Edit</a>
                                 <form action="{{ route('petugas.tiket.destroy', $tiket->id) }}" method="POST"
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-danger" {{sizeof($tiket->pembelian) > 0 ? "disabled" : null}}>Hapus</button>
                                 </form>
                             </td>
                         </tr>
