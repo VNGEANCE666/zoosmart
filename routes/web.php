@@ -66,7 +66,7 @@ Route::prefix('petugas')->middleware(['auth'])->as('petugas.')->group(function (
         $total_pembelian = 0;
 
         for($i = 0;$i < sizeof($pembelians);$i++){
-            $total_pembelian += $pembelians->tiket->harga;
+            $total_pembelian += $pembelians[$i]->tiket->harga;
         }
 
         $hewans = Hewan::all();
