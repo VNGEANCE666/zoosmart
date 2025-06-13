@@ -13,6 +13,7 @@
                         <th scope="col">Jumlah Orang</th>
                         <th scope="col">Tanggal Kunjungan</th>
                         <th scope="col">Harga</th>
+                        <th scope="col">Status</th> <!-- TAMBAHAN -->
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -27,19 +28,30 @@
                             <td>{{ $tiket->tanggal_kunjungan }}</td>
                             <td>Rp{{ number_format($tiket->harga, 2, ",", ".") }}</td>
                             <td>
+                                <span class="badge {{ $tiket->status === 'aktif' ? 'bg-success' : 'bg-secondary' }}">
+                                    {{ ucfirst($tiket->status) }}
+                                </span>
+                            </td>
+                            <td>
                                 <a href="{{ route('petugas.tiket.show', $tiket->id) }}" class="btn btn-success">Lihat</a>
                                 <a href="{{ route('petugas.tiket.edit', $tiket->id) }}" class="btn btn-warning" {{sizeof($tiket->pembelian) > 0 ? "disabled" : null}}>Edit</a>
-                                <form action="{{ route('petugas.tiket.destroy', $tiket->id) }}" method="POST"
-                                    style="display: inline;">
+                                <form action="{{ route('petugas.tiket.destroy', $tiket->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" {{sizeof($tiket->pembelian) > 0 ? "disabled" : null}}>Hapus</button>
+                                </form>
+                                <form method="POST" action="{{ route('petugas.tiket.toggle-status', $tiket->id) }}" style="display: inline;">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-sm {{ $tiket->status === 'aktif' ? 'btn-secondary' : 'btn-success' }}">
+                                        {{ $tiket->status === 'aktif' ? 'Nonaktifkan' : 'Aktifkan' }}
+                                    </button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
-            </table>
+            </table>            
         </div>
     </div>
 @endsection

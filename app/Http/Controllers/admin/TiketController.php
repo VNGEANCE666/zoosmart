@@ -102,4 +102,16 @@ class TiketController extends Controller
 
         return redirect()->route('petugas.tiket.index');
     }
+    public function toggleStatus(Tiket $tiket)
+{
+    $tiket->status = $tiket->status === 'aktif' ? 'nonaktif' : 'aktif';
+    $tiket->save();
+
+    Alert::success('Status tiket berhasil diperbarui!');
+
+    return redirect()->route('petugas.tiket.index');
 }
+
+
+}
+

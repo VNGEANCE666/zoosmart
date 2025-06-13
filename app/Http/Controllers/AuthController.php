@@ -26,7 +26,11 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             return redirect()->route('petugas.dashboard.index');
-        }
+        }// Jika login gagal
+return back()->withErrors([
+    'login' => 'Login gagal. Username atau password salah.',
+])->withInput();
+
     }
 
     public function logout(Request $request)

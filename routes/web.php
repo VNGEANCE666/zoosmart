@@ -81,5 +81,8 @@ Route::prefix('petugas')->middleware(['auth'])->as('petugas.')->group(function (
     Route::resource('hewan', AdminHewanController::class);
     Route::resource('perawatan', AdminPerawatanController::class);
     Route::resource('pembelian', AdminPembelianController::class);
+    Route::patch('tiket/{tiket}/toggle-status', [AdminTiketController::class, 'toggleStatus'])->name('tiket.toggle-status');
+    Route::patch('petugas/tiket/{tiket}/toggle-status', [AdminTiketController::class, 'toggleStatus'])->name('petugas.tiket.toggle-status');
     Route::resource('tiket', AdminTiketController::class);
+
 });

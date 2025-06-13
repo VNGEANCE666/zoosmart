@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tiket extends Model
 {
     protected $table = 'tikets';
-    protected $fillable = ['id', 'harga', 'tanggal_kunjungan', 'jumlah_orang', 'is_used'];
+    protected $fillable = ['id', 'harga', 'tanggal_kunjungan', 'jumlah_orang', 'is_used', 'status'];
+
 
     public function pembelian()
     {

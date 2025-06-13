@@ -37,14 +37,44 @@
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" required autofocus>
+                    <input 
+                        type="text" 
+                        class="form-control @error('username') is-invalid @enderror" 
+                        id="username" 
+                        name="username" 
+                        value="{{ old('username') }}" 
+                        required 
+                        autofocus>
+                    @error('username')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <input 
+                        type="password" 
+                        class="form-control @error('password') is-invalid @enderror" 
+                        id="password" 
+                        name="password" 
+                        required>
+                    @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
+            
+                {{-- Pesan error jika login gagal --}}
+                @if ($errors->has('login'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('login') }}
+                    </div>
+                @endif
+            
                 <button type="submit" class="btn btn-success w-100">Login</button>
-            </form>
+            </form>            
             <p class="mt-3 text-center text-muted" style="font-size: 0.9rem;">© 2025 Zoo System</p>
         </div>
     </div>
