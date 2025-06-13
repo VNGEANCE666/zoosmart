@@ -66,6 +66,80 @@ nav a.active {
   align-items: center;
   padding-left: 100px;
 }
+.about-hero {
+  background-image: url('./images/about.jpg');
+  position: relative;
+}
+.activities-hero {
+  background-image: url('./images/activities.jpg');
+  position: relative;
+}
+
+.activities-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* layer gelap untuk kontras teks */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* layer gelap agar teks lebih jelas */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.get-ticket {
+  padding: 14px 30px;
+  background-color: #004400;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.get-ticket:hover {
+  background-color: #006600;
+}
 
 .get-ticket {
   padding: 14px 30px;
@@ -84,3 +158,134 @@ footer {
   color: white;
   font-size: 14px;
 }
+
+.animal-hero {
+  background-image: url('./images/about.jpg'); /* Ganti kalau mau pakai gambar lain */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+}
+
+.animal-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.hewan-list {
+  padding: 60px 100px;
+  background-color: #f9f9f9;
+}
+
+.hewan-list h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #004400;
+}
+
+.hewan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.hewan-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.hewan-card:hover {
+  transform: translateY(-5px);
+}
+
+.hewan-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.hewan-info {
+  padding: 15px;
+}
+
+.hewan-info h3 {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.hewan-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.no-animals {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 40px;
+}
+.contact-hero {
+  background-image: url('./images/activities.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+}
+
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.contact-info {
+  padding: 60px 100px;
+  background-color: #f9f9f9;
+}
+
+.contact-info h2 {
+  font-size: 36px;
+  color: #004400;
+  margin-bottom: 30px;
+}
+
+.contact-info p {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
+
