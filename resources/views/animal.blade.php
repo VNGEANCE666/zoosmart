@@ -20,7 +20,12 @@
     @if(count($hewans) > 0)
         <div class="hewan-grid">
             @foreach ($hewans as $hewan)
-                <div class="hewan-card">
+                <div class="hewan-card" onclick="openModal(
+                    '{{ $hewan->nama_hewan }}',
+                    '{{ env('FILE_URL') . $hewan->gambar_hewan }}',
+                    '{{ $hewan->spesies }}',
+                    '{{ $hewan->habitat }}'
+                )">
                     <img src="{{ env('FILE_URL') . $hewan->gambar_hewan }}" alt="{{ $hewan->nama_hewan }}">
                     <div class="hewan-info">
                         <h3>{{ $hewan->nama_hewan }}</h3>
@@ -34,4 +39,38 @@
         <p class="no-animals">No animals found.</p>
     @endif
 </div>
+
+<!-- Modal -->
+<div id="animalModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="" style="width:100%; border-radius: 8px;">
+        <h2 id="modalTitle" style="margin-top: 15px;"></h2>
+        <p><strong>Spesies:</strong> <span id="modalSpesies"></span></p>
+        <p><strong>Habitat:</strong> <span id="modalHabitat"></span></p>
+    </div>
+</div>
+@endsection
+
+@section('scripts')
+<script>
+function openModal(title, image, spesies, habitat) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalImage').src = image;
+    document.getElementById('modalSpesies').innerText = spesies;
+    document.getElementById('modalHabitat').innerText = habitat;
+    document.getElementById('animalModal').style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById('animalModal').style.display = "none";
+    }
+
+window.onclick = function(event) {
+    var modal = document.getElementById('animalModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+</script>
 @endsection
