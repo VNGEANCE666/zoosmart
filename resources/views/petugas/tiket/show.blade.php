@@ -1,32 +1,42 @@
 @extends('layouts.petugas_layout')
+
 @section('content')
-    <div class="p-4">
-        <div class="d-flex flex-row justify-content-between mb-4 px-2">
-            <h1>Lihat Tiket</h1>
-        </div>
-        <div class="d-flex flex-column">
-            <form method="POST" action="{{route('petugas.tiket.update', $tiket->id)}}">
-                @csrf
-                @method('PATCH')
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="jumlah_orang">Jumlah Orang</label>
-                        <input type="number" class="form-control" name="jumlah_orang" id="jumlah_orang" value="{{$tiket->jumlah_orang}}" placeholder="Jumlah Orang" required disabled>
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="harga">Harga</label>
-                        <input type="number" class="form-control" name="harga" id="harga" value="{{$tiket->harga}}" placeholder="Harga Tiket" required disabled>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-12">
-                        <label for="tanggal_kunjungan">Tanggal Kunjungan</label>
-                        <input type="date" class="form-control" name="tanggal_kunjungan" id="tanggal_kunjungan" value="{{$tiket->tanggal_kunjungan}}" placeholder="Tanggal Kunjungan" required disabled>
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary fw-bold mb-0">Detail Tiket</h2>
+        <a href="{{ route('petugas.tiket.index') }}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body px-4 py-4">
+            <div class="row g-4">
+                <!-- Jumlah Orang -->
+                <div class="col-md-6">
+                    <label class="form-label text-muted fw-semibold">Jumlah Orang</label>
+                    <div class="form-control-plaintext fs-5">
+                        {{ $tiket->jumlah_orang }}
                     </div>
                 </div>
 
-                <a href="{{route('petugas.tiket.index')}}" class="btn btn-secondary">Kembali</a>
-            </form>
+                <!-- Harga Tiket -->
+                <div class="col-md-6">
+                    <label class="form-label text-muted fw-semibold">Harga Tiket</label>
+                    <div class="form-control-plaintext fs-5">
+                        Rp {{ number_format($tiket->harga, 0, ',', '.') }}
+                    </div>
+                </div>
+
+                <!-- Tanggal Kunjungan -->
+                <div class="col-md-12">
+                    <label class="form-label text-muted fw-semibold">Tanggal Kunjungan</label>
+                    <div class="form-control-plaintext fs-5">
+                        {{ \Carbon\Carbon::parse($tiket->tanggal_kunjungan)->translatedFormat('l, d F Y') }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 @endsection

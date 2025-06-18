@@ -11,7 +11,7 @@ use App\Models\Pembelian;
 use App\Models\Perawatan;
 use App\Models\Tiket;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +47,9 @@ Route::get('/animal', function () {
 
 Route::get('login-page', [AuthController::class, 'login_page'])->name('auth.login-page');
 Route::get('register-page', [AuthController::class, 'register_page'])->name('auth.register-page');
+Route::get('/', function () {
+    return view('Home'); // atau view utama kamu
+});
 
 Route::get('checkout-page', function(){
     $tikets = Tiket::where('is_used', false)->get();
@@ -58,7 +61,10 @@ Route::post('checkout', [PaymentGatewayController::class, 'checkout'])->name('pa
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
-
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/'); // arahkan ke halaman utama (landing page)
+})->name('logout');
 Route::prefix('petugas')->middleware(['auth'])->as('petugas.')->group(function () {
     Route::get('dashboard', function () {
         $pembelians = Pembelian::where('status_transaksi', 'settlement')->get();
@@ -84,5 +90,9 @@ Route::prefix('petugas')->middleware(['auth'])->as('petugas.')->group(function (
     Route::patch('tiket/{tiket}/toggle-status', [AdminTiketController::class, 'toggleStatus'])->name('tiket.toggle-status');
     Route::patch('petugas/tiket/{tiket}/toggle-status', [AdminTiketController::class, 'toggleStatus'])->name('petugas.tiket.toggle-status');
     Route::resource('tiket', AdminTiketController::class);
-
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/petugas/dashboard', [DashboardController::class, 'index'])->name('petugas.dashboard.index');
+        // route admin lainnya...
+    });
+    
 });

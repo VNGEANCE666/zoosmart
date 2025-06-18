@@ -1,44 +1,51 @@
 @extends('layouts.petugas_layout')
-@section('content')
-    <div class="p-4">
-        <div class="d-flex flex-row justify-content-between mb-4 px-2">
-            <h1>Lihat Hewan</h1>
-        </div>
-        <div class="d-flex flex-column">
-            <form method="POST" action="{{route('petugas.hewan.update', $hewan->id)}}" enctype="multipart/form-data">
-                @csrf
-                @method('PATCH')
 
-                <div class="row">
-                    <div class="col-4">
-                        <img src="{{env('FILE_URL') . $hewan->gambar_hewan}}" class="img-fluid" alt="Gambar Hewan">
-                    </div>
-                    <div class="col-8">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="nama_hewan">Nama</label>
-                                <input type="text" class="form-control" name="nama_hewan" id="nama_hewan" value="{{$hewan->nama_hewan}}" placeholder="Nama Hewan" required>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="spesies">Spesies</label>
-                                <input type="text" class="form-control" name="spesies" id="spesies" value="{{$hewan->spesies}}" placeholder="Spesies Hewan" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="habitat">Habitat</label>
-                                <input type="text" class="form-control" name="habitat" id="habitat" value="{{$hewan->habitat}}" placeholder="Habitat Hewan" required>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="tanggal_lahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="{{$hewan->tanggal_lahir}}" placeholder="Tanggal Lahir" required>
-                            </div>
-                        </div>
+@section('content')
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-success fw-bold">Detail & Edit Hewan</h2>
+        <a href="{{ route('petugas.hewan.index') }}" class="btn btn-outline-secondary">← Kembali</a>
+    </div>
+
+    <form method="POST" action="{{ route('petugas.hewan.update', $hewan->id) }}" enctype="multipart/form-data" class="p-4 shadow-sm bg-white rounded">
+        @csrf
+        @method('PATCH')
         
-                        <a href="{{route('petugas.hewan.index')}}" class="btn btn-secondary">Kembali</a>
+        <div class="row g-4 align-items-center">
+            <!-- Gambar Hewan -->
+            <div class="col-md-4 text-center">
+                <img src="{{ env('FILE_URL') . $hewan->gambar_hewan }}" alt="Gambar Hewan" class="img-fluid rounded shadow-sm" style="max-height: 250px; object-fit: cover;">
+            </div>
+
+            <!-- Form Data Hewan -->
+            <div class="col-md-8">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nama_hewan" class="form-label fw-semibold">Nama Hewan</label>
+                        <input type="text" class="form-control" id="nama_hewan" name="nama_hewan" value="{{ $hewan->nama_hewan }}" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="spesies" class="form-label fw-semibold">Spesies</label>
+                        <input type="text" class="form-control" id="spesies" name="spesies" value="{{ $hewan->spesies }}" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="habitat" class="form-label fw-semibold">Habitat</label>
+                        <input type="text" class="form-control" id="habitat" name="habitat" value="{{ $hewan->habitat }}" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="tanggal_lahir" class="form-label fw-semibold">Tanggal Lahir</label>
+                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $hewan->tanggal_lahir }}" required>
                     </div>
                 </div>
-            </form>
+
+                <div class="mt-4 text-end">
+                    <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
+</div>
 @endsection

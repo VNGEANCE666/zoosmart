@@ -1,15 +1,22 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 
 <head>
-    <title>Petugas</title>
     <meta charset="utf-8">
+    <title>Petugas | ZooSmart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Bootstrap & Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- AdminLTE & FontAwesome -->
     <link rel="stylesheet" href="{{ asset('/dist/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/dist/fontawesome-free/css/all.min.css') }}">
 
+    <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap4.css">
 </head>
 
@@ -17,17 +24,33 @@
     @include('sweetalert::alert')
     <div class="wrapper">
 
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <ul class="navbar-nav">
-                <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                <i class="fas fa-bars"></i>
+            </a>
+        </li>
+    </ul>
+
+    <!-- Tambahan: Dropdown Logout -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+
+        <!-- Sidebar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="/" class="brand-link">
+            <a href="/" class="brand-link text-center">
                 <span class="brand-text font-weight-light">ZooSmart</span>
             </a>
 
@@ -35,51 +58,46 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+
                         <li class="nav-item">
                             <a href="{{ route('petugas.dashboard.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Dashboard
-                                </p>
+                                <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('petugas.hewan.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-paw"></i>
-                                <p>
-                                    Hewan
-                                </p>
+                                <p>Hewan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('petugas.perawatan.index') }}" class="nav-link">
-                                <i class="nav-icon 	fas fa-notes-medical"></i>
-                                <p>
-                                    Perawatan
-                                </p>
+                                <i class="nav-icon fas fa-notes-medical"></i>
+                                <p>Perawatan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('petugas.tiket.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-ticket-alt"></i>
-                                <p>
-                                    Tiket
-                                </p>
+                                <p>Tiket</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('petugas.pembelian.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-shopping-cart"></i>
-                                <p>
-                                    Pembelian
-                                </p>
+                                <p>Pembelian</p>
                             </a>
                         </li>
+
                     </ul>
                 </nav>
             </div>
         </aside>
+
+        <!-- Main Content -->
         <div class="content-wrapper">
+            <!-- Header -->
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -94,29 +112,45 @@
                     </div>
                 </div>
             </div>
-            <section class="content">
 
+            <!-- Content Section -->
+            <section class="content">
                 <div class="container-fluid">
                     @yield('content')
                 </div>
             </section>
         </div>
+
+        <!-- Footer (optional) -->
+        {{-- <footer class="main-footer text-center">
+            <small>© 2025 ZooSmart. All rights reserved.</small>
+        </footer> --}}
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+        integrity="sha384-ZvpUoO/+Pw5y+p3g8zN65r3K+Kq+FYKUq+PZdHqvx0o9DW0eFyzA+lD2HkVnGld6" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap4.js"></script>
+    <script src="{{ asset('/dist/adminlte.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (document.querySelector('#datatable')) {
+                new DataTable('#datatable');
+            }
+        });
+    </script>
+
+    @yield('script')
 </body>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
-</script>
-<script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap4.js"></script>
-<script src="{{ asset('/dist/adminlte.js') }}"></script>
-<script>
-    new DataTable('#datatable');
-</script>
-@yield('script')
 
 </html>

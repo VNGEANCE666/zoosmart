@@ -30,6 +30,8 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="col-md-5 login-box text-white">
             <h2 class="text-center zoo-title mb-4">ZooSmart Login</h2>
+
+            
             @if(session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
@@ -74,7 +76,8 @@
                 @endif
             
                 <button type="submit" class="btn btn-success w-100">Login</button>
-            </form>            
+            </form>    
+            <a href="{{ url('/') }}" class="btn btn-secondary w-100 mt-2">Kembali</a>        
             <p class="mt-3 text-center text-muted" style="font-size: 0.9rem;">© 2025 Zoo System</p>
         </div>
     </div>

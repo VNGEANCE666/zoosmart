@@ -418,3 +418,107 @@ body {
 .close:focus {
   color: black;
 }
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  .login-btn {
+    align-self: stretch;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .hero {
+    padding-left: 20px;
+    height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .get-ticket {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .hewan-list {
+    padding: 40px 20px;
+  }
+
+  .hewan-list h2 {
+    font-size: 28px;
+  }
+
+  .hewan-info h3 {
+    font-size: 18px;
+  }
+
+  .hewan-info p {
+    font-size: 13px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 20px;
+    position: static;
+    transform: none;
+    text-align: center;
+  }
+
+  .contact-section {
+    padding: 30px 20px;
+    flex-direction: column;
+  }
+
+  .map-container, .contact-info {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+}
+.card.hover-shadow:hover {
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
+}
+.gallery-img {
+  max-height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.login-btn {
+  background-color: transparent;
+  border: 1px solid #66cc66;
+  color: #66cc66;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #66cc66;
+  color: white;
+}
