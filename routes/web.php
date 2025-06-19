@@ -53,9 +53,14 @@ Route::get('/', function () {
 
 Route::get('checkout-page', function(){
     $tikets = Tiket::where('is_used', false)->get();
+    Route::get('perawatan/laporan/cetak', [PerawatanController::class, 'cetakLaporan'])->name('petugas.perawatan.laporan');
+    Route::get('/biodata', [PetugasController::class, 'index'])->name('petugas.biodata');
 
     return view('pengunjung.checkout', compact('tikets'));
 })->name('pengunjung.checkout-page');
+Route::prefix('petugas')->name('petugas.')->middleware('auth:petugas')->group(function () {
+    Route::resource('kelola-petugas', \App\Http\Controllers\admin\KelolaPetugasController::class);
+});
 
 Route::post('checkout', [PaymentGatewayController::class, 'checkout'])->name('payment.checkout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
